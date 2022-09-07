@@ -14,17 +14,16 @@ const {
 let pool;
 
 const getPool = ()=>{
-    if(!pool){
-        pool = mysql.createPool({
-            host: DB_HOST,
-            port:DB_PORT,
-            user:DB_USER,
-            password:DB_PASS,
-            database:DB_MAIN,
-            timezone:"Z",
-            connectionLimit:10,
-        })
+    const poolConfig = {
+        host: DB_HOST,
+        port:DB_PORT,
+        user:DB_USER,
+        password:DB_PASS,
+        database:DB_MAIN,
+        timezone:"Z",
+        connectionLimit:10,
     }
+    pool = pool || mysql.createPool(poolConfig);
     return pool;
 }
 

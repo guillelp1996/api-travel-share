@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="fileImg"  >
+    <script>
+        const inputImg = document.querySelector("#fileImg");
+        
+        inputImg.addEventListener('change',(e)=>{
+            const body = document.querySelector('body')
+            const img = document.createElement("img")
+            const [file] = e.target.files
+            const reader = new FileReader();
+            reader.addEventListener('load', e=>{
+                const result = reader.result
+                console.log(result)
+                img.src = result;
+                body.append(img)
+                
+            })
+             reader.readAsDataURL(file)
+        })
+
+    </script>
+</body>
+</html>
